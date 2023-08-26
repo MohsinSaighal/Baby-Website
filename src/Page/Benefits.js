@@ -14,7 +14,7 @@ function Benefits() {
       spacing={20}
       sx={{
         maxWidth: "100%",
-        height: { xs: "600vh", md: "350vh", lg: "350vh" },
+        height: { xs: "700vh", md: "350vh", lg: "350vh" },
         background: "#000235",
         justifyContent: "center",
         alignItems: "center",
