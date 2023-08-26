@@ -50,7 +50,6 @@ function Header(props) {
           <ListItem key={item} disablePadding onClick={() => scrollToSection(item)}>
             <ListItemButton sx={{ textAlign: "center", border: 0 }}>
             <LinkR to={item} smooth={true} duration={50} offset={-50}>
-                    {item}
                   </LinkR>
               <ListItemText primary={item} />
             </ListItemButton>
