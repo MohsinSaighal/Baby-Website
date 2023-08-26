@@ -1,0 +1,32 @@
+.divider {
+    display: inline-block;
+    width: 6ch;
+    margin:0.7em 0.5rem;
+    height: 0.05em;
+    background: #F39036;
+  }
+
+  .animated-typography {
+    color: #F39036 !important; 
+    font-family: Urbanist !important;
+    font-size: 50px !important;
+    font-weight: 600 !important;
+    border-bottom: 1px solid #F39036 !important;
+    animation: slideFromRight 1s forwards !important; /* Apply animation */
+  }
+  
+  @keyframes slideFromRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @media screen and (min-width:600px) {
+    .image{
+        width: 100%;
+    }
+}
