@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LinearProgress from "@mui/joy/LinearProgress";
 import Typography from "@mui/joy/Typography";
+import PreSaleAbi from "../components/Contracts/PreSale.json";
+import presaleAddress from "../components/Contracts/PreSaleAddress.json";
+import { ethers } from "ethers";
 
 const ProgressBar = ({raised}) => {
   const [progress, setProgress] = React.useState(0);
-  const percent = (400 / 500) * 100;
+  const [percent,setPercent]=React.useState(0)
+ 
+
+  const getAmountRaised = async () => {
+    try {
+      const providers = new ethers.getDefaultProvider(
+        "https://data-seed-prebsc-1-s3.binance.org:8545/"
+      );
+
+      const contract = new ethers.Contract(
+        presaleAddress.address,
+        PreSaleAbi,
+        providers
+      );
+      const presalePrice = await contract.weiRaised();
+      const toEther = presalePrice/1000000000000000000
+      setPercent((toEther / 1000000) * 100)
+      setProgress(percent)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(()=>{
+    getAmountRaised()
+  },[])
 
   return (
     <LinearProgress
