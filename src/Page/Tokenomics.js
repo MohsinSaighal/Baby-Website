@@ -28,7 +28,7 @@ function Tokenomic() {
       <Typography className="animated-typography" variant="h6">
         Our Tokenomics
       </Typography>
-      <Grid container spacing={2} width={"fit-content"}>
+      <Grid container spacing={2} width={"fit-content"} justifyContent={"center"}>
         <Grid
           item
           xs={12}
@@ -184,7 +184,7 @@ function Tokenomic() {
       />
     </Grid> */}
 
-        {/* <Stack
+<Stack
           display={"flex"}
           direction={"column"}
           alignContent={"center"}
@@ -192,118 +192,117 @@ function Tokenomic() {
           justifyContent={"center"}
           spacing={2}
           marginBottom={"6%"}
-          marginLeft={{xs:"160px"}}
+          marginTop={"5%"}
         >
-         <Stack direction={"row"}   className="responsive-stack">
+          <Stack direction={"row"}>
+            <Stack
+              class="h-[20px] md:h-[25px] w-[20px] md:w-[25px] rounded-full"
+              style={{
+                backgroundColor: " rgb(138, 117, 226)",
+                height: "30px",
+                width: "30px",
+                borderRadius: "1000px",
+                display: "flex",
+                alignContent: "center",
+                alignItems: "center",
+              }}
+            ></Stack>
+            <Stack marginLeft={"20px"} direction={"row"} spacing={30}>
+              <Typography
+                variant="h6"
+                sx={{ color: "white", fontFamily: "Urbanist" }}
+              >
+                Buy Tax
+              </Typography>
+              <div style={{ flexGrow: 1, textAlign: "right" }}>
+                <Typography
+                  variant="h6"
+                  sx={{ color: "white", fontFamily: "Urbanist" }}
+                >
+                  5%
+                </Typography>
+              </div>
+            </Stack>
+          </Stack>
+          <Stack direction={"row"}>
             <Stack
               class="h-[20px] md:h-[25px] w-[20px] md:w-[25px] rounded-full"
               style={{
                 backgroundColor: " rgb(226, 117, 202)",
-                height: {xs:"20px",lg:"30px"},
-                width: {xs:"20px",lg:"30px"},
+                height: "30px",
+                width: "30px",
                 borderRadius: "1000px",
                 display: "flex",
                 alignContent: "center",
                 alignItems: "center",
               }}
             ></Stack>
-            <Stack marginLeft={"20px"}  spacing={{xs:10,lg:30}} direction={"row"}>
+            <Stack marginLeft={"20px"} spacing={30} direction={"row"}>
               <Typography
                 variant="h6"
-                sx={{ color: "white", fontFamily: "Urbanist",fontSize:{xs:"12px"} }}
+                sx={{ color: "white", fontFamily: "Urbanist" }}
               >
                 Sell Tax
               </Typography>
               <div style={{ flexGrow: 1, textAlign: "right" }}>
                 <Typography
                   variant="h6"
-                  sx={{ color: "white", fontFamily: "Urbanist" ,fontSize:{xs:"12px"}}}
+                  sx={{ color: "white", fontFamily: "Urbanist" }}
                 >
                   5%
                 </Typography>
               </div>
             </Stack>
           </Stack>
-          <Stack direction={"row"}   className="responsive-stack">
+          <Stack direction={"row"}>
             <Stack
               class="h-[20px] md:h-[25px] w-[20px] md:w-[25px] rounded-full"
-              sx={{
-                backgroundColor: " rgb(226, 117, 202)",
-                height: {xs:"20px",lg:"30px"},
-                width: {xs:"20px",lg:"30px"},
-                borderRadius: "1000px",
-                display: "flex",
-                alignContent: "center",
-                alignItems: "center",
-              }}
-            ></Stack>
-            <Stack marginLeft={"20px"}  spacing={{xs:10,lg:30}} direction={"row"}>
-              <Typography
-                variant="h6"
-                sx={{ color: "white", fontFamily: "Urbanist",fontSize:{xs:"12px"} }}
-              >
-                Sell Tax
-              </Typography>
-              <div style={{ flexGrow: 1, textAlign: "right" }}>
-                <Typography
-                  variant="h6"
-                  sx={{ color: "white", fontFamily: "Urbanist" ,fontSize:{xs:"12px"}}}
-                >
-                  5%
-                </Typography>
-              </div>
-            </Stack>
-          </Stack>
-          <Stack direction={"row"}   className="responsive-stack">
-            <Stack
-              class="h-[20px] md:h-[25px] w-[20px] md:w-[25px] rounded-full"
-              sx={{
+              style={{
                 backgroundColor: " rgb(231, 195, 105)",
-                height: {xs:"20px",lg:"30px"},
-                width: {xs:"20px",lg:"30px"},
+                height: "30px",
+                width: "30px",
                 borderRadius: "1000px",
                 display: "flex",
                 alignContent: "center",
                 alignItems: "center",
               }}
             ></Stack>
-            <Stack marginLeft={"20px"} direction={"row"}  spacing={{xs:10,lg:30}}>
+            <Stack marginLeft={"20px"} direction={"row"} spacing={30}>
               <Typography
                 variant="h6"
-                sx={{ color: "white", fontFamily: "Urbanist" ,fontSize:{xs:"12px"}}}
+                sx={{ color: "white", fontFamily: "Urbanist" }}
               >
                 Pre Sale
               </Typography>
               <div style={{ flexGrow: 1, textAlign: "right" }}>
                 <Typography
                   variant="h6"
-                  sx={{ color: "white", fontFamily: "Urbanist",fontSize:{xs:"12px"} }}
+                  sx={{ color: "white", fontFamily: "Urbanist" }}
                 >
                   5%
                 </Typography>
               </div>
             </Stack>
           </Stack>
-          <Stack direction={"row"}   className="responsive-stack">
+          <Stack direction={"row"}>
             <Stack
-              sx={{
+              style={{
                 backgroundColor: " rgb(226, 137, 117)",
-                height: {xs:"20px",lg:"30px"},
-                width: {xs:"20px",lg:"30px"},
+                height: "30px",
+                width: "30px",
                 borderRadius: "1000px",
                 display: "flex",
                 alignContent: "center",
                 alignItems: "center",
               }}
             ></Stack>
-            <Stack marginLeft={"20px"} direction={"row"}  spacing={{xs:10,lg:30}}>
+            <Stack marginLeft={"20px"} direction={"row"} spacing={30}>
               <Typography
                 variant="h6"
                 sx={{
                   color: "white",
                   fontFamily: "Urbanist",
                   textAlign: "left",
-                  fontSize:{xs:"12px"}
                 }}
               >
                 Reserve
@@ -311,33 +310,32 @@ function Tokenomic() {
               <div style={{ flexGrow: 1, textAlign: "right" }}>
                 <Typography
                   variant="h6"
-                  sx={{ color: "white", fontFamily: "Urbanist",fontSize:{xs:"12px"} }}
+                  sx={{ color: "white", fontFamily: "Urbanist" }}
                 >
                   5%
                 </Typography>
               </div>
             </Stack>
           </Stack>
-          <Stack direction={"row"}   className="responsive-stack">
+          <Stack direction={"row"}>
             <Stack
-              sx={{
+              style={{
                 backgroundColor: " #DEE062",
-                height: {xs:"20px",lg:"30px"},
-                width: {xs:"20px",lg:"30px"},
+                height: "30px",
+                width: "30px",
                 borderRadius: "1000px",
                 display: "flex",
                 alignContent: "center",
                 alignItems: "center",
               }}
             ></Stack>
-            <Stack marginLeft={"20px"} direction={"row"} spacing={{xs:10,lg:30}}>
+            <Stack marginLeft={"20px"} direction={"row"} spacing={30}>
               <Typography
                 variant="h6"
                 sx={{
                   color: "white",
                   fontFamily: "Urbanist",
                   textAlign: "left",
-                  fontSize:{xs:"12px"}
                 }}
               >
                 Liquidity
@@ -345,14 +343,14 @@ function Tokenomic() {
               <div style={{ flexGrow: 1, textAlign: "right" }}>
                 <Typography
                   variant="h6"
-                  sx={{ color: "white", fontFamily: "Urbanist",fontSize:{xs:"12px"} }}
+                  sx={{ color: "white", fontFamily: "Urbanist" }}
                 >
                   5%
                 </Typography>
               </div>
             </Stack>
           </Stack>
-        </Stack> */}
+        </Stack>
       </Grid>
     </Stack>
   );
