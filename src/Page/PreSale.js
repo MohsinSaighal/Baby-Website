@@ -109,8 +109,8 @@ const PreSale = ({ targetDate }) => {
   const classes = useStyles();
   const [isShown, setIsShown] = useState(false);
   const [amountRaised, setAmountRaised] = useState();
-  const [input,setInput]= useState(0)
-  const [tokenPrice,setTokenPrice]=useState(0)
+  const [input, setInput] = useState(0);
+  const [tokenPrice, setTokenPrice] = useState(0);
 
   const [timeLeft, setTimeLeft] = useState({
     days: 5,
@@ -127,7 +127,7 @@ const PreSale = ({ targetDate }) => {
   };
 
   const getValue = (e) => {
-    setInput(e.target.value)
+    setInput(e.target.value);
   };
 
   const getTokenPrice = async () => {
@@ -141,16 +141,14 @@ const PreSale = ({ targetDate }) => {
         PreSaleAbi,
         providers
       );
-      const decimals = 1000000000000000000
+      const decimals = 1000000000000000000;
       const presalePrice = await contract.getRate();
-      console.log(presalePrice.toString())
-      setTokenPrice(presalePrice.toString()/decimals);
+      console.log(presalePrice.toString());
+      setTokenPrice(presalePrice.toString() / decimals);
     } catch (error) {
       console.log(error);
     }
   };
-
-  
 
   const getAmountRaised = async () => {
     try {
@@ -172,7 +170,7 @@ const PreSale = ({ targetDate }) => {
 
   useEffect(() => {
     getAmountRaised();
-    getTokenPrice()
+    getTokenPrice();
     const interval = setInterval(() => {
       const now = new Date().getTime();
       const difference = targetDate - now;
@@ -286,7 +284,7 @@ const PreSale = ({ targetDate }) => {
           >
             <CardContent>
               <Divider variant="middle">1 Babicu = ${tokenPrice}</Divider>
-              <Divider variant="middle">Listing Price: ${tokenPrice}</Divider>
+              <Divider variant="middle">Listing Price: $5</Divider>
               <Stack
                 sx={{
                   backgroundColor: "#444654",
@@ -344,13 +342,13 @@ const PreSale = ({ targetDate }) => {
                 <ThemeProvider theme={theme}>
                   <Typography>Amount in Baby Farm You Receive</Typography>
                   <TextField
-                     placeholder={tokenPrice * input}
-                     value={tokenPrice * input}
-                     fullWidth
-                     variant="outlined"
-                     InputProps={{
-                       readOnly: true, // Make the input read-only
-                     }}
+                    placeholder={tokenPrice * input}
+                    value={tokenPrice * input}
+                    fullWidth
+                    variant="outlined"
+                    InputProps={{
+                      readOnly: true, // Make the input read-only
+                    }}
                   />
                 </ThemeProvider>
                 {isConnected ? (
@@ -359,7 +357,7 @@ const PreSale = ({ targetDate }) => {
                     sx={{
                       color: "white",
                       textTransform: "uppercase",
-                      backgroundColor:"#1D2226",
+                      backgroundColor: "#1D2226",
                       borderColor: "white",
                       "&:hover": {
                         backgroundColor: "#1D2226",
