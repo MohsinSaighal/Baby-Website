@@ -269,6 +269,7 @@ const PreSale = ({ targetDate }) => {
                 <Typography
                   sx={{ fontFamily: "Urbanist", fontSize: { xs: "15px" } }}
                 >
+                  Stage 1 of PreSale<br></br>
                   USDT raised: ${amountRaised / 1000000000000000000} /
                   $6,700,000
                 </Typography>
