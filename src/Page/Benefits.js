@@ -112,7 +112,7 @@ function Benefits() {
                   width: "100%",
                 }}
               >
-                Stake Your Tokens: To receive utility benefits from your Baby
+                Stake Your Tokens: After PreSale you can get benefits from your Baby
                 Farm tokens, you will need to stake them on the platform.
                 Staking involves locking your tokens for a specific period
                 during which you will be eligible for the utility benefits
