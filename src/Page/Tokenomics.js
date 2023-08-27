@@ -19,7 +19,7 @@ function Tokenomic() {
       spacing={20}
       sx={{
         maxWidth: "100%",
-        height: { xs: "240vh",sm:"220vh", lg: "180vh" },
+        height: { xs: "260vh",sm:"220vh", lg: "180vh" },
         background: "#000235",
         justifyContent: "center",
         alignItems: "center",
