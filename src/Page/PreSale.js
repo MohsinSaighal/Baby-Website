@@ -20,6 +20,8 @@ import USDT from "../assets/Phone/usdt.svg";
 import { useAccount, useDisconnect } from "wagmi";
 import PreSaleAbi from "../components/Contracts/PreSale.json";
 import presaleAddress from "../components/Contracts/PreSaleAddress.json";
+import USDTAbi from "../components/Contracts/USDT.json";
+import USDTAddress from "../components/Contracts/USDTAddress.json";
 import { ethers } from "ethers";
 
 const theme = createTheme({
@@ -167,6 +169,23 @@ const PreSale = ({ targetDate }) => {
       console.log(error);
     }
   };
+
+  const buy = async ()=>{
+    try{
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const Signer = await provider.getSigner()
+      const contract = new ethers.Contract(
+        presaleAddress.address,
+        PreSaleAbi,
+        Signer
+      );
+      const USDT = new ethers.Contract(USDTAddress.address,USDTAbi,Signer);
+      await USDT.approve(presaleAddress.address,ethers.utils.parseEther(input.toString()))
+      await(await contract.buyTokens(input)).wait();
+    }catch(error){
+      console.log(error)
+    }
+  }
 
   useEffect(() => {
     getAmountRaised();
@@ -367,7 +386,7 @@ const PreSale = ({ targetDate }) => {
                       },
                     }}
                     className={classes.customButton}
-                    onClick={() => disconnect()}
+                    onClick={() => buy()}
                   >
                     Buy Now!
                   </Button>
