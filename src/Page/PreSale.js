@@ -116,10 +116,10 @@ const PreSale = ({ targetDate }) => {
   const [tokenPrice, setTokenPrice] = useState(0);
 
   const [timeLeft, setTimeLeft] = useState({
-    days: 5,
-    hours: 6,
-    minutes: 21,
-    seconds: 15,
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
   });
 
   const openModal = () => {
@@ -171,6 +171,35 @@ const PreSale = ({ targetDate }) => {
       console.log(error);
     }
   };
+  const getTime = async () => {
+    try {
+      const providers = new ethers.getDefaultProvider(
+        "https://data-seed-prebsc-1-s3.binance.org:8545/"
+      );
+  
+      const contract = new ethers.Contract(
+        presaleAddress.address,
+        PreSaleAbi,
+        providers
+      );
+  
+      const blockchainUnixTimestamp = await contract.getEndTime();
+      const currentUnixTimestamp = Math.floor(Date.now() / 1000); // Current timestamp in seconds
+  
+      const timeDifference = blockchainUnixTimestamp - currentUnixTimestamp;
+      const days = Math.floor(timeDifference / (24 * 60 * 60));
+      const hours = Math.floor((timeDifference % (24 * 60 * 60)) / 3600);
+      const minutes = Math.floor((timeDifference % 3600) / 60);
+      const seconds = timeDifference % 60;
+  
+      console.log("Time Difference:");
+      console.log(`${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`);
+      setTimeLeft({days,hours,minutes,seconds})
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
 
   const buy = async () => {
     try {
@@ -202,29 +231,13 @@ const PreSale = ({ targetDate }) => {
 
   useEffect(() => {
     getAmountRaised();
-    getTokenPrice();
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor(
-          (difference % (1000 * 60 * 60)) / (1000 * 60)
-        );
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        setTimeLeft({ days, hours, minutes, seconds });
-      } else {
-        clearInterval(interval);
-      }
+    setInterval(() => {
+      getTime();
     }, 1000);
 
-    return () => clearInterval(interval);
-  }, [targetDate]);
+    getTokenPrice();
+    
+  }, []);
   const deductionAmount = (tokenPrice * input) * 0.05;
   const restAmount = tokenPrice * input - deductionAmount;
 
