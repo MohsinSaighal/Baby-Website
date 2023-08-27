@@ -112,6 +112,7 @@ const PreSale = ({ targetDate }) => {
   const [isShown, setIsShown] = useState(false);
   const [amountRaised, setAmountRaised] = useState();
   const [input, setInput] = useState(0);
+  const [expected, setExpected] = useState(0);
   const [tokenPrice, setTokenPrice] = useState(0);
 
   const [timeLeft, setTimeLeft] = useState({
@@ -130,6 +131,7 @@ const PreSale = ({ targetDate }) => {
 
   const getValue = (e) => {
     setInput(e.target.value);
+    getExpectedPrice();
   };
 
   const getTokenPrice = async () => {
@@ -170,22 +172,33 @@ const PreSale = ({ targetDate }) => {
     }
   };
 
-  const buy = async ()=>{
-    try{
+  const buy = async () => {
+    try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const Signer = await provider.getSigner()
+      const Signer = await provider.getSigner();
       const contract = new ethers.Contract(
         presaleAddress.address,
         PreSaleAbi,
         Signer
       );
-      const USDT = new ethers.Contract(USDTAddress.address,USDTAbi,Signer);
-      await USDT.approve(presaleAddress.address,ethers.utils.parseEther(input.toString()))
-      await(await contract.buyTokens(input)).wait();
-    }catch(error){
-      console.log(error)
+      const USDT = new ethers.Contract(USDTAddress.address, USDTAbi, Signer);
+      await USDT.approve(
+        presaleAddress.address,
+        ethers.utils.parseEther(input.toString())
+      );
+      await (await contract.buyTokens(input)).wait();
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
+
+  const getExpectedPrice = async () => {
+    const initialValue = tokenPrice * input;
+    const deduction = initialValue * 0.05;
+    const finalValue = initialValue - deduction;
+    setExpected(finalValue);
+    console.log(finalValue);
+  };
 
   useEffect(() => {
     getAmountRaised();
@@ -212,6 +225,8 @@ const PreSale = ({ targetDate }) => {
 
     return () => clearInterval(interval);
   }, [targetDate]);
+  const deductionAmount = (tokenPrice * input) * 0.05;
+  const restAmount = tokenPrice * input - deductionAmount;
 
   return (
     <Stack
@@ -281,7 +296,7 @@ const PreSale = ({ targetDate }) => {
               sx={{ borderRadius: "0px" }}
             >
               <Grid item>
-                <ProgressBar />
+                <ProgressBar raised={amountRaised / 1000000000000000000} />
               </Grid>
               <br />
               <Grid sx={{ textAlign: "center" }} spacing={3}>
@@ -362,8 +377,8 @@ const PreSale = ({ targetDate }) => {
                 <ThemeProvider theme={theme}>
                   <Typography>Amount in Baby Farm You Receive</Typography>
                   <TextField
-                    placeholder={tokenPrice * input}
-                    value={tokenPrice * input}
+                    placeholder={restAmount}
+                    value={restAmount}
                     fullWidth
                     variant="outlined"
                     InputProps={{

@@ -2,7 +2,7 @@ import React from "react";
 import LinearProgress from "@mui/joy/LinearProgress";
 import Typography from "@mui/joy/Typography";
 
-const ProgressBar = (Props) => {
+const ProgressBar = ({raised}) => {
   const [progress, setProgress] = React.useState(0);
   const percent = (400 / 500) * 100;
 
