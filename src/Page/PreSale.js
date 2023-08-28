@@ -184,19 +184,25 @@ const PreSale = ({ targetDate }) => {
       );
 
       const blockchainUnixTimestamp = await contract.getEndTime();
+
       const currentUnixTimestamp = Math.floor(Date.now() / 1000); // Current timestamp in seconds
-
       const timeDifference = blockchainUnixTimestamp - currentUnixTimestamp;
-      const days = Math.floor(timeDifference / (24 * 60 * 60));
-      const hours = Math.floor((timeDifference % (24 * 60 * 60)) / 3600);
-      const minutes = Math.floor((timeDifference % 3600) / 60);
-      const seconds = timeDifference % 60;
 
-      console.log("Time Difference:");
-      console.log(
-        `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`
-      );
-      setTimeLeft({ days, hours, minutes, seconds });
+      if (timeDifference <= 0) {
+        console.log("Time has exceeded the blockchain time.");
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      } else {
+        const days = Math.floor(timeDifference / (24 * 60 * 60));
+        const hours = Math.floor((timeDifference % (24 * 60 * 60)) / 3600);
+        const minutes = Math.floor((timeDifference % 3600) / 60);
+        const seconds = timeDifference % 60;
+
+        console.log("Time Difference:");
+        console.log(
+          `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`
+        );
+        setTimeLeft({ days, hours, minutes, seconds });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -317,7 +323,8 @@ const PreSale = ({ targetDate }) => {
                   sx={{ fontFamily: "Urbanist", fontSize: { xs: "15px" } }}
                 >
                   Stage 1 of PreSale<br></br>
-                  USDT raised: ${amountRaised / 1000000000000000000} / $10,000,00
+                  USDT raised: ${amountRaised / 1000000000000000000} /
+                  $10,000,00
                 </Typography>
               </Grid>
             </Grid>
