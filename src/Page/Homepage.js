@@ -46,6 +46,20 @@ const Homepage = () => {
                 color: "white",
               }}
             >
+              Baby Farm Token is a BEP-20 token that has been deployed on the
+              Binance Smart Chain (BSC). As a BEP-20 token, it adheres to the
+              Binance Smart Chain's token standard and is compatible with BSC's
+              decentralized applications and ecosystem.
+            </Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                fontFamily: "Outfit",
+                fontSize: { xs: "20px", sm: "15px", lg: "20px" },
+                fontWeight: "500",
+                color: "white",
+              }}
+            >
               Babyfarm is a unique project in cryptocurrency market based on the
               combination between farming and camping sites.
             </Typography>
