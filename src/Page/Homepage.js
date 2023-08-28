@@ -2,6 +2,7 @@ import { Stack, Grid, Typography, Button } from "@mui/material";
 import React from "react";
 import CoinImage from "../assets/Hero/coin image in top.svg";
 import { Link as LinkR } from "react-scroll";
+import PDF from "../assets/BabyFarmWhitePaper.pdf"
 
 const Homepage = () => {
   const scrollToSection = (sectionId) => {
@@ -10,6 +11,9 @@ const Homepage = () => {
       section.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
+  const openPDF =()=>{
+  window.open(PDF)
+  }
   const typographyStyle = {
     color: "#FFF",
     fontFamily: "Outfit",
@@ -79,6 +83,7 @@ const Homepage = () => {
                     background: "#F39036", // Set the same background color as normal state
                   },
                 }}
+                onClick={openPDF}
               >
                 White Paper
               </Button>
