@@ -324,7 +324,7 @@ const PreSale = ({ targetDate }) => {
                 >
                   Stage 1 of PreSale<br></br>
                   USDT raised: ${amountRaised / 1000000000000000000} /
-                  $10,000,00
+                  $10,000,000
                 </Typography>
               </Grid>
             </Grid>
