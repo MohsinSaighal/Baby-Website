@@ -176,30 +176,31 @@ const PreSale = ({ targetDate }) => {
       const providers = new ethers.getDefaultProvider(
         "https://data-seed-prebsc-1-s3.binance.org:8545/"
       );
-  
+
       const contract = new ethers.Contract(
         presaleAddress.address,
         PreSaleAbi,
         providers
       );
-  
+
       const blockchainUnixTimestamp = await contract.getEndTime();
       const currentUnixTimestamp = Math.floor(Date.now() / 1000); // Current timestamp in seconds
-  
+
       const timeDifference = blockchainUnixTimestamp - currentUnixTimestamp;
       const days = Math.floor(timeDifference / (24 * 60 * 60));
       const hours = Math.floor((timeDifference % (24 * 60 * 60)) / 3600);
       const minutes = Math.floor((timeDifference % 3600) / 60);
       const seconds = timeDifference % 60;
-  
+
       console.log("Time Difference:");
-      console.log(`${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`);
-      setTimeLeft({days,hours,minutes,seconds})
+      console.log(
+        `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`
+      );
+      setTimeLeft({ days, hours, minutes, seconds });
     } catch (error) {
       console.log(error);
     }
-  }
-  
+  };
 
   const buy = async () => {
     try {
@@ -236,9 +237,8 @@ const PreSale = ({ targetDate }) => {
     }, 1000);
 
     getTokenPrice();
-    
   }, []);
-  const deductionAmount = (tokenPrice * input) * 0.05;
+  const deductionAmount = tokenPrice * input * 0.05;
   const restAmount = tokenPrice * input - deductionAmount;
 
   return (
@@ -317,8 +317,7 @@ const PreSale = ({ targetDate }) => {
                   sx={{ fontFamily: "Urbanist", fontSize: { xs: "15px" } }}
                 >
                   Stage 1 of PreSale<br></br>
-                  USDT raised: ${amountRaised / 1000000000000000000} /
-                  $6,700,000
+                  USDT raised: ${amountRaised / 1000000000000000000} / $10,000,00
                 </Typography>
               </Grid>
             </Grid>
