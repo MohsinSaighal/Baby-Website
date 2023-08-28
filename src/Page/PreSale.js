@@ -337,7 +337,7 @@ const PreSale = ({ targetDate }) => {
             }}
           >
             <CardContent>
-              <Divider variant="middle">1 Babicu = ${tokenPrice}</Divider>
+              <Divider variant="middle">1 BabyFarm = ${tokenPrice}</Divider>
               <Divider variant="middle">Listing Price: $5</Divider>
               <Stack
                 sx={{
