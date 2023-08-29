@@ -17,7 +17,7 @@ import { makeStyles } from "@mui/styles";
 import { useWeb3Modal } from "@web3modal/react";
 import ProgressBar from "./Progress";
 import USDT from "../assets/Phone/usdt.svg";
-import { useAccount, useDisconnect } from "wagmi";
+import { useAccount, useDisconnect ,useChainId} from "wagmi";
 import PreSaleAbi from "../components/Contracts/PreSale.json";
 import presaleAddress from "../components/Contracts/PreSaleAddress.json";
 import USDTAbi from "../components/Contracts/USDT.json";
