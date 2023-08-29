@@ -137,7 +137,7 @@ const PreSale = ({ targetDate }) => {
   const getTokenPrice = async () => {
     try {
       const providers = new ethers.getDefaultProvider(
-        "https://data-seed-prebsc-1-s3.binance.org:8545/"
+        "https://bsc-dataseed1.binance.org/"
       );
 
       const contract = new ethers.Contract(
@@ -157,7 +157,7 @@ const PreSale = ({ targetDate }) => {
   const getAmountRaised = async () => {
     try {
       const providers = new ethers.getDefaultProvider(
-        "https://data-seed-prebsc-1-s3.binance.org:8545/"
+        "https://bsc-dataseed1.binance.org/"
       );
 
       const contract = new ethers.Contract(
@@ -174,7 +174,7 @@ const PreSale = ({ targetDate }) => {
   const getTime = async () => {
     try {
       const providers = new ethers.getDefaultProvider(
-        "https://data-seed-prebsc-1-s3.binance.org:8545/"
+        "https://bsc-dataseed1.binance.org/"
       );
 
       const contract = new ethers.Contract(

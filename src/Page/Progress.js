@@ -5,15 +5,14 @@ import PreSaleAbi from "../components/Contracts/PreSale.json";
 import presaleAddress from "../components/Contracts/PreSaleAddress.json";
 import { ethers } from "ethers";
 
-const ProgressBar = ({raised}) => {
+const ProgressBar = ({ raised }) => {
   const [progress, setProgress] = React.useState(0);
-  const [percent,setPercent]=React.useState(0)
- 
+  const [percent, setPercent] = React.useState(0);
 
   const getAmountRaised = async () => {
     try {
       const providers = new ethers.getDefaultProvider(
-        "https://data-seed-prebsc-1-s3.binance.org:8545/"
+        "https://bsc-dataseed1.binance.org/"
       );
 
       const contract = new ethers.Contract(
@@ -22,17 +21,17 @@ const ProgressBar = ({raised}) => {
         providers
       );
       const presalePrice = await contract.weiRaised();
-      const toEther = presalePrice/1000000000000000000
-      setPercent((toEther / 1000000) * 100)
-      setProgress(percent)
+      const toEther = presalePrice / 1000000000000000000;
+      setPercent((toEther / 1000000) * 100);
+      setProgress(percent);
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(()=>{
-    getAmountRaised()
-  },[])
+  useEffect(() => {
+    getAmountRaised();
+  }, []);
 
   return (
     <LinearProgress
