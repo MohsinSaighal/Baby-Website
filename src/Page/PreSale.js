@@ -23,6 +23,8 @@ import presaleAddress from "../components/Contracts/PreSaleAddress.json";
 import USDTAbi from "../components/Contracts/USDT.json";
 import USDTAddress from "../components/Contracts/USDTAddress.json";
 import { ethers } from "ethers";
+import { arbitrum, mainnet, polygon,bsc } from "wagmi/chains";
+
 
 const theme = createTheme({
   palette: {
@@ -105,7 +107,7 @@ const WhiteTextField = ({ label, placeholder }) => {
 };
 
 const PreSale = ({ targetDate }) => {
-  const { open, close } = useWeb3Modal();
+  const { open, close,setDefaultChain } = useWeb3Modal();
   const { isConnected } = useAccount();
   const { disconnect } = useDisconnect();
   const classes = useStyles();
@@ -114,6 +116,7 @@ const PreSale = ({ targetDate }) => {
   const [input, setInput] = useState(0);
   const [expected, setExpected] = useState(0);
   const [tokenPrice, setTokenPrice] = useState(0);
+  setDefaultChain(bsc)
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
