@@ -7,8 +7,8 @@ import { PieChart } from "@mui/x-charts/PieChart";
 
 function Tokenomic() {
   const data2 = [
-    { label: "Buy Tax", value: 5, color: "#8A75E2" },
-    { label: "Sell Tax", value: 5, color: "#E275CA" },
+    { label: "Buy Tax", value: 0, color: "#8A75E2" },
+    { label: "Sell Tax", value: 0, color: "#E275CA" },
     { label: "PreSale", value: 20, color: "#E7C369" },
     { label: "Reserved Token", value: 10, color: "#E28975" },
     { label: "Liquidity Pool", value: 70, color: "#DEE062" },
@@ -219,7 +219,7 @@ function Tokenomic() {
                   variant="h6"
                   sx={{ color: "white", fontFamily: "Urbanist" }}
                 >
-                  5%
+                  0%
                 </Typography>
               </div>
             </Stack>
@@ -249,7 +249,7 @@ function Tokenomic() {
                   variant="h6"
                   sx={{ color: "white", fontFamily: "Urbanist" }}
                 >
-                  5%
+                  0%
                 </Typography>
               </div>
             </Stack>
