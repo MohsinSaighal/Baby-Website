@@ -17,14 +17,13 @@ import { makeStyles } from "@mui/styles";
 import { useWeb3Modal } from "@web3modal/react";
 import ProgressBar from "./Progress";
 import USDT from "../assets/Phone/usdt.svg";
-import { useAccount, useDisconnect ,useChainId} from "wagmi";
+import { useAccount, useDisconnect, useChainId } from "wagmi";
 import PreSaleAbi from "../components/Contracts/PreSale.json";
 import presaleAddress from "../components/Contracts/PreSaleAddress.json";
 import USDTAbi from "../components/Contracts/USDT.json";
 import USDTAddress from "../components/Contracts/USDTAddress.json";
 import { ethers } from "ethers";
-import { arbitrum, mainnet, polygon,bsc } from "wagmi/chains";
-
+import { arbitrum, mainnet, polygon, bsc } from "wagmi/chains";
 
 const theme = createTheme({
   palette: {
@@ -107,7 +106,7 @@ const WhiteTextField = ({ label, placeholder }) => {
 };
 
 const PreSale = ({ targetDate }) => {
-  const { open, close,setDefaultChain } = useWeb3Modal();
+  const { open, close, setDefaultChain } = useWeb3Modal();
   const { isConnected } = useAccount();
   const { disconnect } = useDisconnect();
   const classes = useStyles();
@@ -116,7 +115,7 @@ const PreSale = ({ targetDate }) => {
   const [input, setInput] = useState(0);
   const [expected, setExpected] = useState(0);
   const [tokenPrice, setTokenPrice] = useState(0);
-  setDefaultChain(bsc)
+  setDefaultChain(bsc);
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -135,6 +134,14 @@ const PreSale = ({ targetDate }) => {
   const getValue = (e) => {
     setInput(e.target.value);
     getExpectedPrice();
+  };
+
+  const handleButtonClick = () => {
+    // Redirect to the desired link
+    window.open(
+      "https://pancakeswap.finance/swap?chain=bsc&outputCurrency=0x8D25a02248B31227735cD4d4524A1bD54a951759",
+      "_blank"
+    );
   };
 
   const getTokenPrice = async () => {
@@ -262,7 +269,7 @@ const PreSale = ({ targetDate }) => {
         width: { xs: "96%" },
       }}
     >
-      <Stack>
+      <Stack justifyContent={"center"} textAlign={"center"}>
         <Typography
           sx={{
             color: "#F39036",
@@ -273,8 +280,38 @@ const PreSale = ({ targetDate }) => {
         >
           Buy BabyFarm Here
         </Typography>
+        <Typography
+          sx={{
+            color: "#F39036",
+            fontFamily: "Urbanist",
+            fontSize: { xs: "10px", lg: "20px" },
+            fontWeight: "800",
+          }}
+        >
+          We are Live on PancakeSwap you can buy BabyFarm by Clicking Button
+          Below
+        </Typography>
       </Stack>
-      <Stack width={{ xs: "90%", lg: "30%" }}>
+      <Stack>
+        <Button
+          onClick={handleButtonClick}
+          variant="outlined"
+          sx={{
+            color: "black",
+            background: "#F39036",
+            fontFamily: "Urbanist",
+            fontSize: { xs: "10px", lg: "20px" },
+            fontWeight: "800",
+            "&:hover": {
+              color: "black",
+              background: "#F39036",
+            },
+          }}
+        >
+          Buy Here
+        </Button>
+      </Stack>
+      {/* <Stack width={{ xs: "90%", lg: "30%" }}>
         <Card
           sx={{
             borderRadius: "1.3rem",
@@ -448,7 +485,7 @@ const PreSale = ({ targetDate }) => {
             </CardContent>
           </Card>
         </Card>
-      </Stack>
+      </Stack> */}
     </Stack>
   );
 };
